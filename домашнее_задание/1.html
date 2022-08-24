@@ -10,27 +10,53 @@
   <!--
 Обязательное задание.
 
-Необходимо с помощью цикла for вывести следующие 11 строк в консоль:
-0 – это ноль
-1 – нечетное число
-2 – четное число
-3 – нечетное число
-…
-10 – четное число
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для продукта.
+Названия: `ProductES5` для es5 стиля, `ProductES6` для es6 стиля.
+При создании объекта от функции-конструктора/класса необходимо передавать имя
+и цену товара, эта информация должна быть сохранена в объекте.
+Также у объекта должна быть возможность выполнить метод `make25Discount`, данный
+метод должен уменьшать стоимость продукта на 25%.
+Необходимо продемонстрировать работу с объектом (в свободной форме).
 -->
   <script>
     "use strict";
+    //ES5--------------------------------------------------
 
-    for (let count = 0; count <= 10; count++) {
-      if (count === 0) {
-        console.log(`${count} - это ноль`);
-      } else if (count % 2 !== 0) {
-        console.log(`${count} - нечетное число`);
-      } else {
-        (count % 2 === 0);
-        console.log(`${count} - четное число`);
+    function ProductES5(name, price) {
+      this.name = name;
+      this.price = price;
+    }
+
+    ProductES5.prototype.make25Discount = function () {
+      this.price *= 0.75;
+    };
+
+    const productOne = new ProductES5('Наушники', 1500);
+    console.log(`Название продукта: ${productOne.name}, цена: ${productOne.price}`);
+    productOne.make25Discount();
+    console.log(`Название продукта: ${productOne.name},c учетом скидки цена:
+    ${productOne.price}`);
+
+    //ES6-----------------------------------------------------
+    class ProductES6 {
+      constructor(name, price) {
+        this.name = name;
+        this.price = price;
+      }
+
+      make25Discount() {
+        this.price *= 0.75;
       }
     }
+
+    const productTwo = new ProductES6('Мышь', 900);
+    console.log(`Название продукта: ${productTwo.name}, цена: ${productTwo.price} `);
+    productTwo.make25Discount();
+    console.log(`Название продукта: ${productTwo.name},c учетом скидки цена:
+    ${productTwo.price}`);
+
+
   </script>
 </body>
 
